@@ -31,7 +31,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release --no-restore src/Elmah.Io.Xamarin/Elmah.Io.Xamarin.csproj
     - name: Test
-      run: dotnet test --no-restore --verbosity normal
+      run: dotnet test --no-restore --verbosity normal test/Elmah.Io.Xamarin.Test/Elmah.Io.Xamarin.Test.csproj
     - name: Pack
       run: dotnet pack --configuration Release src/Elmah.Io.Xamarin/Elmah.Io.Xamarin.csproj /p:Version=3.0.${{ github.run_number }}-pre
     - name: Push
