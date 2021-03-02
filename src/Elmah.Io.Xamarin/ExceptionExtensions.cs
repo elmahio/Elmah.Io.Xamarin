@@ -27,6 +27,7 @@ namespace Elmah.Io.Xamarin
             var createMessage = new CreateMessage
             {
                 Data = Data(exception),
+                ServerVariables = ServerVariables(),
                 DateTime = DateTime.UtcNow,
                 Detail = exception?.ToString(),
                 Severity = Severity.Error.ToString(),
@@ -43,6 +44,18 @@ namespace Elmah.Io.Xamarin
             }
 
             elmahIoXamarin.ElmahIoClient.Messages.CreateAndNotify(options.LogId, createMessage);
+        }
+
+        private static IList<Item> ServerVariables()
+        {
+            var serverVariables = new List<Item>();
+            try
+            {
+                // Generate a pseudo user agent for elmah.io to use for grouping, search, etc.
+                serverVariables.Add(new Item("User-Agent", $"X-ELMAHIO-MOBILE; OS={DeviceInfo.Platform}; OSVERSION={DeviceInfo.VersionString}; ENGINE=Xamarin"));
+            }
+            catch {}
+            return serverVariables;
         }
 
         private static List<Item> Data(Exception exception)
