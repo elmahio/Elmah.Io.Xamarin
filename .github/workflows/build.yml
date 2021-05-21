@@ -35,7 +35,7 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal test/Elmah.Io.Xamarin.Test/Elmah.Io.Xamarin.Test.csproj
     - name: Pack
-      run: nuget pack Elmah.Io.Xamarin.nuspec -Version 3.0.${{ github.run_number }} -Properties Configuration=Release -Properties Commit=${{ github.sha }}
+      run: nuget pack Elmah.Io.Xamarin.nuspec -Version 3.0.${{ github.run_number }}-pre -Properties Configuration=Release -Properties Commit=${{ github.sha }}
     - name: Push
       run: dotnet nuget push Elmah.Io.Xamarin.3.0.${{ github.run_number }}-pre.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
       if: ${{ github.event_name == 'push' }}
