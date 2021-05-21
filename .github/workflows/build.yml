@@ -12,8 +12,8 @@ jobs:
     steps:
     - name: Checkout project
       uses: actions/checkout@v2
-#    - name: Add msbuild to PATH
-#      uses: microsoft/setup-msbuild@v1.0.2
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.0.2
 #    - name: Build samples
 #      run: |
 #        msbuild samples/ElmahIo.Samples.XamarinAndroid/ElmahIo.Samples.XamarinAndroid.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
