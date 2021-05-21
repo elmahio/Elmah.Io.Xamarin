@@ -32,12 +32,9 @@
     <file src="src\Elmah.Io.Xamarin\images\icon.png" target="icon.png" />
     <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\netstandard2.0\Elmah.Io.Xamarin.dll" target="lib\netstandard2.0\Elmah.Io.Xamarin.dll" />
     <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\netstandard2.0\Elmah.Io.Xamarin.xml" target="lib\netstandard2.0\Elmah.Io.Xamarin.xml" />
-    <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\netstandard2.0\Elmah.Io.Xamarin.pdb" target="lib\netstandard2.0\Elmah.Io.Xamarin.pdb" />
     <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\monoandroid9.0\Elmah.Io.Xamarin.dll" target="lib\monoandroid90\Elmah.Io.Xamarin.dll" />
     <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\monoandroid9.0\Elmah.Io.Xamarin.xml" target="lib\monoandroid90\Elmah.Io.Xamarin.xml" />
-    <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\monoandroid9.0\Elmah.Io.Xamarin.pdb" target="lib\monoandroid90\Elmah.Io.Xamarin.pdb" />
     <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\xamarin.ios10\Elmah.Io.Xamarin.dll" target="lib\xamarinios10\Elmah.Io.Xamarin.dll" />
     <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\xamarin.ios10\Elmah.Io.Xamarin.xml" target="lib\xamarinios10\Elmah.Io.Xamarin.xml" />
-    <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\xamarin.ios10\Elmah.Io.Xamarin.pdb" target="lib\xamarinios10\Elmah.Io.Xamarin.pdb" />
   </files>
 </package>
