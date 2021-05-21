@@ -12,6 +12,8 @@ jobs:
     steps:
     - name: Checkout project
       uses: actions/checkout@v2
+    - name: Setup nuget
+      uses: nuget/setup-nuget@v1
     - name: Add msbuild to PATH
       uses: microsoft/setup-msbuild@v1.0.2
 #    - name: Build samples
@@ -33,7 +35,7 @@ jobs:
     - name: Test
       run: dotnet test --no-restore --verbosity normal test/Elmah.Io.Xamarin.Test/Elmah.Io.Xamarin.Test.csproj
     - name: Pack
-      run: dotnet pack --configuration Release src/Elmah.Io.Xamarin/Elmah.Io.Xamarin.csproj /p:Version=3.0.${{ github.run_number }}-pre
+      run: nuget pack Elmah.Io.Xamarin.nuspec -Version 3.0.${{ github.run_number }} -Properties Configuration=Release -Properties Commit=${{ github.sha }}
     - name: Push
       run: dotnet nuget push src/Elmah.Io.Xamarin/bin/Release/Elmah.Io.Xamarin.3.0.${{ github.run_number }}-pre.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
       if: ${{ github.event_name == 'push' }}
