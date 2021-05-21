@@ -27,5 +27,8 @@
         <dependency id="Xamarin.Essentials" version="1.6.1" exclude="Build,Analyzers" />
       </group>
     </dependencies>
+    <files>
+      <file src="src\Elmah.Io.Xamarin\images\icon.png" target="icon.png" />
+    </files>
   </metadata>
 </package>
