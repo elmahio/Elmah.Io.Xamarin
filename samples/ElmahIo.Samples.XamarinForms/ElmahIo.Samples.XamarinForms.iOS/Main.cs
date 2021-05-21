@@ -22,15 +22,6 @@ namespace ElmahIo.Samples.XamarinForms.iOS
                 ApiKey = "API_KEY",
                 LogId = new Guid("LOG_ID"),
             });
-            AppDomain.CurrentDomain.UnhandledException += (sender, e) =>
-            {
-                (e.ExceptionObject as Exception).Log();
-            };
-            TaskScheduler.UnobservedTaskException += (sender, e) =>
-            {
-                e.Exception.Log();
-                e.SetObserved();
-            };
         }
     }
 }

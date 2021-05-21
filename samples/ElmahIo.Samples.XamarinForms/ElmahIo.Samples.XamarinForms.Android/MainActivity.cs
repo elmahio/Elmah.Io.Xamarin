@@ -1,5 +1,4 @@
 ﻿using System;
-
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
@@ -21,16 +20,6 @@ namespace ElmahIo.Samples.XamarinForms.Droid
                 ApiKey = "API_KEY",
                 LogId = new Guid("LOG_ID"),
             });
-            AndroidEnvironment.UnhandledExceptionRaiser += (sender, e) =>
-            {
-                e.Exception.Log();
-                e.Handled = true;
-            };
-            TaskScheduler.UnobservedTaskException += (sender, e) =>
-            {
-                e.Exception.Log();
-                e.SetObserved();
-            };
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;

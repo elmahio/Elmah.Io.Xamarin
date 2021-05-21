@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="MSBuild.Sdk.Extras/3.0.22">
 
   <PropertyGroup>
     <Description>Log to elmah.io from Xamarin</Description>
     <Authors>elmah.io</Authors>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;xamarin.ios10;monoandroid9.0;</TargetFrameworks>
     <AssemblyName>Elmah.Io.Xamarin</AssemblyName>
     <PackageId>Elmah.Io.Xamarin</PackageId>
     <PackageTags>Error;Exception;Reporting;Management;Logging;Xamarin;Crash</PackageTags>
@@ -17,6 +17,10 @@
     <GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <PropertyGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
     <!-- SourceLink -->
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -27,17 +31,35 @@
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All"/>
+  <ItemGroup Condition=" '$(Configuration)'=='Release' And '$(OS)' == 'Windows_NT' ">
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0" PrivateAssets="All" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Elmah.Io.Client" Version="[3.11.13-pre,4)" />
+    <PackageReference Include="Elmah.Io.Client" Version="[3.12.18-pre,4)" />
     <PackageReference Include="Xamarin.Essentials" Version="1.6.1" />
   </ItemGroup>
 
+  <ItemGroup Condition="$(TargetFramework.StartsWith('monoandroid')) ">
+    <Compile Include="**\*.droid.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('xamarin.ios')) ">
+    <Compile Include="**\*.ios.cs" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$(TargetFramework.StartsWith('netstandard')) ">
+    <Compile Include="**\*.netstandard.cs" />
+  </ItemGroup>
+
   <ItemGroup>
-    <None Include="images\icon.png" Pack="true" PackagePath="\"/>
+    <None Include="images\icon.png" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="ElmahIoXamarin.cs" />
+    <Compile Include="ElmahIoXamarinOptions.cs" />
+    <Compile Include="ExceptionExtensions.cs" />
   </ItemGroup>
 
 </Project>

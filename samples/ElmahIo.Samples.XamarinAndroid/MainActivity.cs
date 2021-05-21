@@ -7,7 +7,6 @@ using Android.Views;
 using Android.Widget;
 using Elmah.Io.Xamarin;
 using System;
-using System.Threading.Tasks;
 
 namespace ElmahIo.Samples.XamarinAndroid
 {
@@ -16,6 +15,22 @@ namespace ElmahIo.Samples.XamarinAndroid
     {
         TextView textMessage;
 
+        // Examples of how to log breadcrumbs as part of actions like back button pressed or setting the app on pause
+
+        public override void OnBackPressed()
+        {
+            ElmahIoXamarin.AddBreadcrumb("OnBackPressed", DateTime.UtcNow, action: "Navigation");
+            base.OnBackPressed();
+        }
+
+        protected override void OnPause()
+        {
+            ElmahIoXamarin.AddBreadcrumb("OnPause", DateTime.UtcNow);
+            base.OnPause();
+        }
+
+        // End of examples
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             ElmahIoXamarin.Init(new ElmahIoXamarinOptions
@@ -23,16 +38,6 @@ namespace ElmahIo.Samples.XamarinAndroid
                 ApiKey = "API_KEY",
                 LogId = new Guid("LOG_ID"),
             });
-            AndroidEnvironment.UnhandledExceptionRaiser += (sender, e) =>
-            {
-                e.Exception.Log();
-                e.Handled = true;
-            };
-            TaskScheduler.UnobservedTaskException += (sender, e) =>
-            {
-                e.Exception.Log();
-                e.SetObserved();
-            };
 
             base.OnCreate(savedInstanceState);
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
@@ -50,16 +55,21 @@ namespace ElmahIo.Samples.XamarinAndroid
         }
         public bool OnNavigationItemSelected(IMenuItem item)
         {
+            // More examples of logging breadcrumbs to elmah.io when clicking in the app
+
             switch (item.ItemId)
             {
                 case Resource.Id.navigation_home:
+                    ElmahIoXamarin.AddBreadcrumb("Navigate to Home", DateTime.UtcNow, action: "Navigation");
                     textMessage.SetText(Resource.String.title_home);
                     return true;
                 case Resource.Id.navigation_dashboard:
+                    ElmahIoXamarin.AddBreadcrumb("Navigate to Dashboard", DateTime.UtcNow, action: "Navigation");
                     throw new ApplicationException("We who are about to die salute you!");
                     textMessage.SetText(Resource.String.title_dashboard);
                     return true;
                 case Resource.Id.navigation_notifications:
+                    ElmahIoXamarin.AddBreadcrumb("Navigate to Notifications", DateTime.UtcNow, action: "Navigation");
                     textMessage.SetText(Resource.String.title_notifications);
                     return true;
             }
