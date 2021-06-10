@@ -1,5 +1,4 @@
 ﻿using Elmah.Io.Client;
-using Elmah.Io.Client.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;

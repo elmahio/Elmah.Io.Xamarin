@@ -1,8 +1,4 @@
-﻿using Elmah.Io.Client;
-using Elmah.Io.Client.Models;
-using System;
-using System.Collections.Generic;
-using Xamarin.Essentials;
+﻿using System;
 
 namespace Elmah.Io.Xamarin
 {

@@ -1,5 +1,4 @@
 ﻿using Elmah.Io.Client;
-using Elmah.Io.Client.Models;
 using NSubstitute;
 using NUnit.Framework;
 using System;
@@ -16,8 +15,8 @@ namespace Elmah.Io.Xamarin.Test
             ElmahIoXamarin.Init(new ElmahIoXamarinOptions { LogId = logId });
             var instance = ElmahIoXamarin.Instance;
             var elmahIoClientMock = Substitute.For<IElmahioAPI>();
-            var messagesMock = Substitute.For<IMessages>();
-            elmahIoClientMock.Messages.Returns(messagesMock);
+            var messagesClientMock = Substitute.For<IMessagesClient>();
+            elmahIoClientMock.Messages.Returns(messagesClientMock);
             instance.ElmahIoClient = elmahIoClientMock;
             var inner = new ArgumentException("Inner");
             var outer = new Exception("Outer", inner);
@@ -26,7 +25,7 @@ namespace Elmah.Io.Xamarin.Test
             outer.Log();
 
             // Assert
-            messagesMock.Received(1).CreateAndNotify(Arg.Is(logId), Arg.Is<CreateMessage>(msg =>
+            messagesClientMock.Received(1).CreateAndNotify(Arg.Is(logId), Arg.Is<CreateMessage>(msg =>
                 msg.Title == "Inner"
                 && msg.Type == "System.ArgumentException"
                 && !string.IsNullOrWhiteSpace(msg.Detail)
