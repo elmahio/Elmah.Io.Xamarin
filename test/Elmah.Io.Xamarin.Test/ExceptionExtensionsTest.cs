@@ -12,7 +12,7 @@ namespace Elmah.Io.Xamarin.Test
         {
             // Arrange
             var logId = Guid.NewGuid();
-            ElmahIoXamarin.Init(new ElmahIoXamarinOptions { LogId = logId });
+            ElmahIoXamarin.Init(new ElmahIoXamarinOptions { LogId = logId, ApiKey = "API_KEY" });
             var instance = ElmahIoXamarin.Instance;
             var elmahIoClientMock = Substitute.For<IElmahioAPI>();
             var messagesClientMock = Substitute.For<IMessagesClient>();

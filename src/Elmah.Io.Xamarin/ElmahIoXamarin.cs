@@ -61,7 +61,7 @@ namespace Elmah.Io.Xamarin
         private ElmahIoXamarin(ElmahIoXamarinOptions options)
         {
             Options = options;
-            var client = (ElmahioAPI)ElmahioAPI.Create(Options.ApiKey);
+            var client = ElmahioAPI.Create(Options.ApiKey);
             client.HttpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue("Elmah.Io.Xamarin", _assemblyVersion)));
             client.Messages.OnMessage += (sender, args) =>
             {
