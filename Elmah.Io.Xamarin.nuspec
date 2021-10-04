@@ -12,6 +12,7 @@
     <iconUrl>https://secure.gravatar.com/avatar/5c4cb3646528821117abde6d2d5ee22d?s=64</iconUrl>
     <description>Log to elmah.io from Xamarin</description>
     <tags>Error Exception Reporting Management Logging Xamarin Crash</tags>
+    <readme>README.md</readme>
     <repository type="git" url="https://github.com/elmahio/Elmah.Io.Xamarin" commit="6e68417528303436d1052297ed30e991886cb3b6" />
     <dependencies>
       <group targetFramework=".NETStandard2.0">
@@ -30,6 +31,7 @@
   </metadata>
   <files>
     <file src="src\Elmah.Io.Xamarin\images\icon.png" target="icon.png" />
+    <file src="README.md" target="README.md" />
     <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\netstandard2.0\Elmah.Io.Xamarin.dll" target="lib\netstandard2.0\Elmah.Io.Xamarin.dll" />
     <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\netstandard2.0\Elmah.Io.Xamarin.xml" target="lib\netstandard2.0\Elmah.Io.Xamarin.xml" />
     <file src="src\Elmah.Io.Xamarin\bin\$Configuration$\monoandroid9.0\Elmah.Io.Xamarin.dll" target="lib\monoandroid90\Elmah.Io.Xamarin.dll" />
