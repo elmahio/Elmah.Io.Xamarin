@@ -16,15 +16,15 @@
     <repository type="git" url="https://github.com/elmahio/Elmah.Io.Xamarin" commit="6e68417528303436d1052297ed30e991886cb3b6" />
     <dependencies>
       <group targetFramework=".NETStandard2.0">
-        <dependency id="Elmah.Io.Client" version="[4.1.33-pre, 5.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Elmah.Io.Client" version="[4.1.34-pre, 5.0.0)" exclude="Build,Analyzers" />
         <dependency id="Xamarin.Essentials" version="1.6.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="MonoAndroid9.0">
-        <dependency id="Elmah.Io.Client" version="[4.1.33-pre, 5.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Elmah.Io.Client" version="[4.1.34-pre, 5.0.0)" exclude="Build,Analyzers" />
         <dependency id="Xamarin.Essentials" version="1.6.1" exclude="Build,Analyzers" />
       </group>
       <group targetFramework="Xamarin.iOS1.0">
-        <dependency id="Elmah.Io.Client" version="[4.1.33-pre, 5.0.0)" exclude="Build,Analyzers" />
+        <dependency id="Elmah.Io.Client" version="[4.1.34-pre, 5.0.0)" exclude="Build,Analyzers" />
         <dependency id="Xamarin.Essentials" version="1.6.1" exclude="Build,Analyzers" />
       </group>
     </dependencies>
