@@ -11,25 +11,24 @@ jobs:
     runs-on: windows-latest
     steps:
     - name: Checkout project
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
     - name: Setup nuget
       uses: nuget/setup-nuget@v1
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: microsoft/setup-msbuild@v1.1.3
 #    - name: Build samples
 #      run: |
 #        msbuild samples/ElmahIo.Samples.XamarinAndroid/ElmahIo.Samples.XamarinAndroid.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
 #        msbuild samples/ElmahIo.Samples.XamarinForms/ElmahIo.Samples.XamarinForms.Android/ElmahIo.Samples.XamarinForms.Android.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
 #        msbuild samples/ElmahIo.Samples.XamarinForms.iOS/ElmahIo.Samples.XamarinForms.iOS.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
 #        msbuild samples/ElmahIo.Samples.XamariniOS/ElmahIo.Samples.XamariniOS.csproj /verbosity:normal /t:Rebuild /p:Configuration=Debug
-    - name: Setup .NET Core 3.1
-      uses: actions/setup-dotnet@v1
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 3.1.x
-    - name: Setup .NET 5.0
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 5.0.x
+        dotnet-version: |
+          3.1.x
+          5.0.x
+          6.0.x
     - name: Install dependencies
       run: |
         dotnet restore src/Elmah.Io.Xamarin/Elmah.Io.Xamarin.csproj
