@@ -66,8 +66,6 @@ namespace ElmahIo.Samples.XamarinAndroid
                 case Resource.Id.navigation_dashboard:
                     ElmahIoXamarin.AddBreadcrumb("Navigate to Dashboard", DateTime.UtcNow, action: "Navigation");
                     throw new ApplicationException("We who are about to die salute you!");
-                    textMessage.SetText(Resource.String.title_dashboard);
-                    return true;
                 case Resource.Id.navigation_notifications:
                     ElmahIoXamarin.AddBreadcrumb("Navigate to Notifications", DateTime.UtcNow, action: "Navigation");
                     textMessage.SetText(Resource.String.title_notifications);

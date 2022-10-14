@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http.Headers;
 using System.Runtime.CompilerServices;
+using System.Text;
 using Xamarin.Essentials;
 
 [assembly: InternalsVisibleTo("Elmah.Io.Xamarin.Test")]
@@ -61,8 +62,10 @@ namespace Elmah.Io.Xamarin
         private ElmahIoXamarin(ElmahIoXamarinOptions options)
         {
             Options = options;
-            var client = ElmahioAPI.Create(Options.ApiKey);
-            client.HttpClient.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue(new ProductHeaderValue("Elmah.Io.Xamarin", _assemblyVersion)));
+            var client = ElmahioAPI.Create(Options.ApiKey, new ElmahIoOptions
+            {
+                UserAgent = UserAgent(),
+            });
             client.Messages.OnMessage += (sender, args) =>
             {
                 Options.OnMessage?.Invoke(args.Message);
@@ -213,6 +216,13 @@ namespace Elmah.Io.Xamarin
             catch { }
 
             return null;
+        }
+
+        private static string UserAgent()
+        {
+            return new StringBuilder()
+                .Append(new ProductInfoHeaderValue(new ProductHeaderValue("Elmah.Io.Xamarin", _assemblyVersion)).ToString())
+                .ToString();
         }
     }
 }
